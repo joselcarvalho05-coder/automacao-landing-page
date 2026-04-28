@@ -89,9 +89,9 @@ body {
   .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid rgba(137,217,232,.4);border-radius:9999px;background:rgba(137,217,232,.08);color:#89d9e8;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:28px}
   .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#89d9e8;box-shadow:0 0 8px #89d9e8;animation:pulse 2s ease-in-out infinite}
 
-  h1.hero-title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,5.4vw,68px);line-height:1.04;letter-spacing:-.012em;margin:0 0 24px;text-wrap:balance}
+  h1.hero-title{font-family:var(--font-display);font-weight:700;font-size:clamp(36px,4.4vw,58px);line-height:1.05;letter-spacing:-.012em;margin:0 0 22px;text-wrap:balance;max-width:620px}
   .accent{color:#89d9e8}
-  .hero-sub{font-size:18px;line-height:1.65;color:rgba(242,242,242,.78);max-width:560px;margin:0 0 32px}
+  .hero-sub{font-size:17px;line-height:1.62;color:rgba(242,242,242,.78);max-width:560px;margin:0}
 
   .hero-bullets{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:32px 0 36px;max-width:540px}
   .hero-bullet{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(242,242,242,.85);line-height:1.45}
@@ -151,27 +151,34 @@ body {
   .problem-card h3{font-family:var(--font-body);font-weight:700;font-size:17px;margin:0 0 10px;line-height:1.3}
   .problem-card p{font-size:14px;color:#7a9aaa;line-height:1.6;margin:0}
 
-  /* ============== HOW (timeline) ============== */
+  /* ============== HOW (stepped tracks) ============== */
   .how-section{background:linear-gradient(to bottom,#000 0%,#011E30 50%,#000 100%)}
-  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
-  @media(max-width:880px){.how-steps{grid-template-columns:1fr}}
-  @media(min-width:881px) and (max-width:1100px){.how-steps{grid-template-columns:repeat(2,1fr)}}
-  .step{position:relative;padding:36px 30px;border:1px solid rgba(255,255,255,.08);background:#0a0a0a;border-radius:16px;overflow:hidden;transition:border-color .4s,background .4s,transform .3s}
-  .step:hover{border-color:rgba(137,217,232,.25);background:rgba(0,49,82,.15);transform:translateY(-3px)}
-  .step::before{content:attr(data-num);position:absolute;top:-18px;right:-8px;font-family:var(--font-display);font-size:140px;font-weight:700;line-height:1;color:rgba(137,217,232,.04);pointer-events:none;transition:color .4s}
-  .step:hover::before{color:rgba(137,217,232,.08)}
-  .step .step-num{font-family:ui-monospace,monospace;font-size:11px;color:#89d9e8;letter-spacing:2px;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-weight:500}
-  .step .step-num::before{content:"";width:4px;height:4px;border-radius:50%;background:#89d9e8}
-  .step .ic{width:42px;height:42px;border-radius:10px;background:rgba(137,217,232,.10);border:1px solid rgba(137,217,232,.30);display:flex;align-items:center;justify-content:center;color:#89d9e8;margin-bottom:18px}
-  .step h3{font-family:var(--font-body);font-weight:700;font-size:18px;margin:0 0 10px}
-  .step p{font-size:14px;color:#7a9aaa;line-height:1.65;margin:0 0 16px}
-  .step .deliverable{font-size:11.5px;color:#89d9e8;letter-spacing:.5px;display:flex;align-items:center;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
-  .step .deliverable .ic{width:auto;height:auto;background:none;border:none;margin:0}
+  .how-track{margin-bottom:48px}
+  .how-track:last-of-type{margin-bottom:0}
+  .how-indicators{position:relative;display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 28px}
+  .how-indicators::before,.how-indicators::after{content:"";position:absolute;top:50%;height:2px;background:#003152;transform:translateY(-50%);z-index:0}
+  .how-indicators::before{left:calc(16.6667% + 24px);right:calc(50% + 24px)}
+  .how-indicators::after{left:calc(50% + 24px);right:calc(16.6667% + 24px)}
+  .how-circle{width:32px;height:32px;border-radius:50%;background:#003152;color:#f2f2f2;display:flex;align-items:center;justify-content:center;justify-self:center;font-family:var(--font-body);font-weight:600;font-size:13px;position:relative;z-index:1}
+  .how-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:880px){.how-indicators{display:none}.how-cards{grid-template-columns:1fr}.how-track{margin-bottom:20px}}
+  @media(min-width:881px) and (max-width:1100px){.how-cards{gap:14px}}
+  .how-card{position:relative;padding:30px 26px;border:1px solid rgba(255,255,255,.08);background:#0a0a0a;border-radius:18px;display:flex;flex-direction:column;transition:border-color .4s,background .4s,transform .3s,box-shadow .3s}
+  .how-card:hover{border-color:rgba(137,217,232,.28);background:rgba(0,49,82,.18);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.45)}
+  .how-card .num-mobile{display:none;font-family:var(--font-body);font-weight:600;font-size:12px;color:#89d9e8;letter-spacing:1.5px;margin-bottom:14px}
+  @media(max-width:880px){.how-card .num-mobile{display:block}}
+  .how-card .ic{width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#89d9e8;margin-bottom:22px;transition:background .3s,color .3s}
+  .how-card:hover .ic{background:rgba(137,217,232,.12);color:#d1fcff}
+  .how-card h3{font-family:var(--font-body);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 10px;color:var(--fg)}
+  .how-card p{font-size:14.5px;color:#7a9aaa;line-height:1.65;margin:0;flex:1}
 
   /* ============== SOLUTIONS ============== */
   .solutions{background:#000}
-  .sol-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:stretch}
-  @media(max-width:980px){.sol-grid{grid-template-columns:1fr}}
+  .sol-grid{display:grid;grid-template-columns:1.25fr 0.85fr;gap:80px;align-items:stretch}
+  @media(max-width:980px){.sol-grid{grid-template-columns:1fr;gap:48px}}
+  .sol-left{display:flex;flex-direction:column}
+  .sol-left .sol-cta{margin-top:auto;padding-top:24px}
+  @media(max-width:980px){.sol-left .sol-cta{margin-top:24px;padding-top:0}}
   .sol-list{display:flex;flex-direction:column;gap:8px}
   .sol-item{display:flex;gap:16px;padding:20px 22px;border:1px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:.25s;background:rgba(10,10,10,.6);align-items:flex-start}
   .sol-item:hover{border-color:rgba(137,217,232,.20);background:rgba(10,10,10,.85)}
@@ -183,16 +190,27 @@ body {
   .sol-item .arrow{margin-left:auto;color:rgba(137,217,232,.0);transition:.25s;align-self:center}
   .sol-item.active .arrow{color:#89d9e8}
 
-  .sol-display{position:relative;border-radius:16px;background:radial-gradient(circle at 30% 20%,rgba(137,217,232,.18),transparent 60%),linear-gradient(135deg,#003152 0%,#000 70%);border:1px solid rgba(137,217,232,.18);overflow:hidden;min-height:480px;padding:36px;display:flex;flex-direction:column}
-  .sol-display .label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(137,217,232,.85);margin-bottom:16px;font-weight:500}
-  .sol-display .display-title{font-family:var(--font-display);font-weight:700;font-size:32px;line-height:1.1;margin:0 0 14px;letter-spacing:-.01em}
-  .sol-display .display-desc{font-size:14.5px;color:rgba(242,242,242,.72);line-height:1.6;margin:0 0 28px;max-width:380px}
-
+  .sol-display{position:relative;border-radius:32px;background:#050505;overflow:hidden;min-height:480px;padding:40px 36px;display:flex;flex-direction:column;transform:perspective(1000px) rotateX(0) rotateY(0) translateY(0);transform-style:preserve-3d;transition:transform .5s cubic-bezier(0.16,1,0.3,1),box-shadow .5s cubic-bezier(0.16,1,0.3,1);box-shadow:0 -6px 48px 4px rgba(135,217,229,.14),0 0 8px 0 rgba(0,0,0,.4);will-change:transform}
+  .sol-display::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 80%,rgba(255,255,255,.05) 100%);pointer-events:none;z-index:5;border-radius:inherit}
+  .sol-display::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.18;mix-blend-mode:overlay;pointer-events:none;z-index:2;border-radius:inherit}
+  .sol-glow-a{position:absolute;bottom:0;left:0;right:0;height:75%;background:radial-gradient(ellipse at bottom right,rgba(135,217,229,1) -30%,rgba(1,49,78,0) 65%),radial-gradient(ellipse at bottom left,rgba(208,253,254,.9) -30%,rgba(1,49,78,0) 65%);filter:blur(25px);z-index:1;opacity:.95;pointer-events:none;transition:opacity .5s ease-out}
+  .sol-glow-b{position:absolute;bottom:0;left:0;right:0;height:75%;background:radial-gradient(circle at bottom center,rgba(1,49,78,1) -30%,rgba(135,217,229,0) 55%);filter:blur(30px);z-index:1;opacity:.9;transform:translateY(10%);pointer-events:none;transition:opacity .5s ease-out}
+  .sol-display:hover .sol-glow-a{opacity:1}
+  .sol-display:hover .sol-glow-b{opacity:1}
+  .sol-border-bottom{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.7) 50%,rgba(255,255,255,.05) 100%);box-shadow:0 0 15px 4px rgba(135,217,229,.9),0 0 30px 8px rgba(208,253,254,.6),0 0 45px 12px rgba(1,49,78,.8);z-index:6;transition:box-shadow .5s ease-out;opacity:1}
+  .sol-display:hover .sol-border-bottom{box-shadow:0 0 20px 6px rgba(135,217,229,1),0 0 40px 10px rgba(208,253,254,.8),0 0 60px 15px rgba(1,49,78,1)}
+  .sol-content{position:relative;z-index:10;display:flex;flex-direction:column;height:100%;width:100%}
+  .sol-icon-circle{width:52px;height:52px;border-radius:50%;background:linear-gradient(225deg,#171c2c 0%,#121624 100%);display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative;overflow:hidden;color:#fff;box-shadow:0 6px 12px -2px rgba(0,0,0,.25),0 3px 6px -1px rgba(0,0,0,.15),inset 1px 1px 3px rgba(255,255,255,.12),inset -2px -2px 4px rgba(0,0,0,.5);transition:transform .4s ease-out,box-shadow .4s ease-out}
+  .sol-icon-circle::before{content:"";position:absolute;top:0;left:0;width:66%;height:66%;background:radial-gradient(circle at top left,rgba(255,255,255,.5),transparent 80%);opacity:.4;filter:blur(10px);pointer-events:none}
+  .sol-icon-circle::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:50%;background:linear-gradient(to top,rgba(0,0,0,.4),transparent);opacity:.5;pointer-events:none}
+  .sol-icon-circle i{position:relative;z-index:2}
+  .sol-display:hover .sol-icon-circle{transform:translateY(-2px);box-shadow:0 8px 16px -2px rgba(0,0,0,.3),0 4px 8px -1px rgba(0,0,0,.2),inset 2px 2px 5px rgba(255,255,255,.15),inset -2px -2px 5px rgba(0,0,0,.7)}
+  .sol-display .label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(208,253,254,.95);margin-bottom:14px;font-weight:500}
+  .sol-display .display-title{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1.1;margin:0 0 14px;letter-spacing:-.01em;color:#fff}
+  .sol-display .display-desc{font-size:14.5px;color:rgba(242,242,242,.78);line-height:1.6;margin:0 0 26px;max-width:380px}
   .sol-features{display:flex;flex-direction:column;gap:10px;margin-bottom:auto}
-  .sol-feature{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(242,242,242,.85)}
-  .sol-feature .check{width:20px;height:20px;border-radius:6px;background:rgba(137,217,232,.15);border:1px solid rgba(137,217,232,.4);display:flex;align-items:center;justify-content:center;color:#89d9e8;flex-shrink:0}
-
-  .sol-glyph{position:absolute;right:-30px;bottom:-60px;font-family:var(--font-display);font-weight:700;font-size:280px;color:rgba(137,217,232,.10);line-height:1;pointer-events:none;user-select:none}
+  .sol-feature{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(242,242,242,.88)}
+  .sol-feature .check{width:20px;height:20px;border-radius:6px;background:rgba(135,217,229,.18);border:1px solid rgba(208,253,254,.45);display:flex;align-items:center;justify-content:center;color:#d0fdfe;flex-shrink:0}
 
   /* ============== STATS / RESULTS ============== */
   .results{background:linear-gradient(to bottom,#000 0%,rgba(1,30,48,.5) 50%,#000 100%);position:relative;overflow:hidden}
@@ -307,7 +325,6 @@ body {
     <nav class="nav-links">
       <a href="#processo">Processo</a>
       <a href="#solucoes">Soluções</a>
-      <a href="#resultados">Resultados</a>
       <a href="#faq">Dúvidas</a>
     </nav>
     <button class="nav-cta" onclick="scrollToForm()">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button>
@@ -322,21 +339,14 @@ body {
     <div class="hero-grid">
       <div>
         <h1 class="hero-title">Sua operação ainda depende de <span class="accent">trabalho manual?</span></h1>
-        <p class="hero-sub">Em 30 minutos, mapeamos o que pode ser automatizado na sua empresa e mostramos quanto tempo e dinheiro você está perdendo. Sem venda. Sem proposta. Só dados.</p>
-
-        <div class="hero-bullets">
-          <div class="hero-bullet"><span class="ic"><i data-lucide="check" style="width:18px;height:18px"></i></span><span>Mapeamento real da sua operação — não um template</span></div>
-          <div class="hero-bullet"><span class="ic"><i data-lucide="check" style="width:18px;height:18px"></i></span><span>Estimativa concreta de horas e custo recuperáveis</span></div>
-          <div class="hero-bullet"><span class="ic"><i data-lucide="check" style="width:18px;height:18px"></i></span><span>Resposta de um especialista em até 5 min</span></div>
-          <div class="hero-bullet"><span class="ic"><i data-lucide="check" style="width:18px;height:18px"></i></span><span>Sem custo, sem compromisso de seguir</span></div>
-        </div>
+        <p class="hero-sub">Em 1 hora, mapeamos o que pode ser automatizado na sua empresa e mostramos quanto tempo e dinheiro você está perdendo. Sem venda. Sem proposta. Só dados.</p>
 
       </div>
 
       <!-- FORM -->
       <form class="form-card" id="form" onsubmit="submitForm(event)">
         <h2>Solicite seu diagnóstico</h2>
-        <p class="form-sub">Preencha abaixo e receba uma análise gratuita da sua operação.</p>
+        <p class="form-sub">Preencha abaixo e receba o contato do nosso time em até 5 minutos.</p>
         <div class="form">
           <div class="field"><label>Seu nome</label><input required name="nome" placeholder="Nome completo"></div>
           <div class="field"><label>WhatsApp</label><input required name="telefone" placeholder="(00) 00000-0000"></div>
@@ -386,48 +396,58 @@ body {
       <h2 class="section-title">Como funciona o nosso serviço, em <span class="accent">6 etapas.</span></h2>
       <p class="section-lead">Sem promessas vagas. Cada etapa tem entregáveis claros — e você decide se segue para a próxima.</p>
     </div>
-    <div class="how-steps">
-      <div class="step reveal" data-d="1" data-num="1">
-        <span class="step-num">ETAPA 01</span>
-        <div class="ic"><i data-lucide="search" style="width:20px;height:20px"></i></div>
-        <h3>Diagnóstico</h3>
-        <p>Mapeamos os processos da sua empresa e identificamos onde há desperdício de tempo e dinheiro. Você só precisa nos contar como as coisas funcionam hoje.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="file-text" style="width:13px;height:13px"></i></span>Relatório de oportunidades</div>
+    <div class="how-track reveal" data-d="1">
+      <div class="how-indicators" aria-hidden="true">
+        <div class="how-circle">1</div>
+        <div class="how-circle">2</div>
+        <div class="how-circle">3</div>
       </div>
-      <div class="step reveal" data-d="2" data-num="2">
-        <span class="step-num">ETAPA 02</span>
-        <div class="ic"><i data-lucide="file-check" style="width:20px;height:20px"></i></div>
-        <h3>Proposta</h3>
-        <p>Com base no diagnóstico, entregamos um plano claro: o que será automatizado, como, e qual o retorno esperado, em números reais.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="calendar" style="width:13px;height:13px"></i></span>Roadmap + escopo fechado</div>
+      <div class="how-cards">
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 01</span>
+          <div class="ic"><i data-lucide="search" style="width:22px;height:22px"></i></div>
+          <h3>Diagnóstico</h3>
+          <p>Mapeamos os processos da sua empresa e identificamos onde há desperdício de tempo e dinheiro. Você só precisa nos contar como as coisas funcionam hoje.</p>
+        </div>
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 02</span>
+          <div class="ic"><i data-lucide="file-check" style="width:22px;height:22px"></i></div>
+          <h3>Proposta</h3>
+          <p>Com base no diagnóstico, entregamos um plano claro: o que será automatizado, como, e qual o retorno esperado, em números reais.</p>
+        </div>
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 03</span>
+          <div class="ic"><i data-lucide="code" style="width:22px;height:22px"></i></div>
+          <h3>Desenvolvimento</h3>
+          <p>Nossa equipe técnica constrói a solução sob medida para o seu negócio. Você não precisa saber programação. Só acompanhar.</p>
+        </div>
       </div>
-      <div class="step reveal" data-d="3" data-num="3">
-        <span class="step-num">ETAPA 03</span>
-        <div class="ic"><i data-lucide="code" style="width:20px;height:20px"></i></div>
-        <h3>Desenvolvimento</h3>
-        <p>Nossa equipe técnica constrói a solução sob medida para o seu negócio. Você não precisa saber programação. Só acompanhar.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="git-branch" style="width:13px;height:13px"></i></span>Sprints quinzenais</div>
+    </div>
+    <div class="how-track reveal" data-d="2">
+      <div class="how-indicators" aria-hidden="true">
+        <div class="how-circle">4</div>
+        <div class="how-circle">5</div>
+        <div class="how-circle">6</div>
       </div>
-      <div class="step reveal" data-d="4" data-num="4">
-        <span class="step-num">ETAPA 04</span>
-        <div class="ic"><i data-lucide="plug" style="width:20px;height:20px"></i></div>
-        <h3>Implementação</h3>
-        <p>Integramos tudo aos sistemas que você já usa. Sem parar a operação e sem virar sua empresa de cabeça pra baixo.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="check-circle" style="width:13px;height:13px"></i></span>Integração sem downtime</div>
-      </div>
-      <div class="step reveal" data-d="5" data-num="5">
-        <span class="step-num">ETAPA 05</span>
-        <div class="ic"><i data-lucide="users" style="width:20px;height:20px"></i></div>
-        <h3>Treinamento</h3>
-        <p>Treinamos sua equipe para usar o novo processo. Simples, prático, sem tecnicismo. Todo mundo sai sabendo.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="book-open" style="width:13px;height:13px"></i></span>Capacitação da equipe</div>
-      </div>
-      <div class="step reveal" data-d="6" data-num="6">
-        <span class="step-num">ETAPA 06</span>
-        <div class="ic"><i data-lucide="shield-check" style="width:20px;height:20px"></i></div>
-        <h3>Acompanhamento</h3>
-        <p>Ficamos ao seu lado, garantindo que tudo funciona e ajustando conforme a operação real.</p>
-        <div class="deliverable"><span class="ic"><i data-lucide="activity" style="width:13px;height:13px"></i></span>Suporte contínuo</div>
+      <div class="how-cards">
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 04</span>
+          <div class="ic"><i data-lucide="plug" style="width:22px;height:22px"></i></div>
+          <h3>Implementação</h3>
+          <p>Integramos tudo aos sistemas que você já usa. Sem parar a operação e sem virar sua empresa de cabeça pra baixo.</p>
+        </div>
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 05</span>
+          <div class="ic"><i data-lucide="users" style="width:22px;height:22px"></i></div>
+          <h3>Treinamento</h3>
+          <p>Treinamos sua equipe para usar o novo processo. Simples, prático, sem tecnicismo. Todo mundo sai sabendo.</p>
+        </div>
+        <div class="how-card">
+          <span class="num-mobile">ETAPA 06</span>
+          <div class="ic"><i data-lucide="shield-check" style="width:22px;height:22px"></i></div>
+          <h3>Acompanhamento</h3>
+          <p>Ficamos ao seu lado, garantindo que tudo funciona e ajustando conforme a operação real.</p>
+        </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:48px" class="reveal" data-d="7"><button class="nav-cta" onclick="scrollToForm()" style="padding:14px 28px;font-size:14px;border-radius:10px">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button></div>
@@ -437,31 +457,37 @@ body {
 <!-- SOLUTIONS -->
 <section class="solutions" id="solucoes">
   <div class="container">
-    <div class="section-head reveal" style="text-align:left;margin:0 0 56px;max-width:760px">
-      <h2 class="section-title">Cada solução é construída <span class="accent">para o seu fluxo.</span></h2>
-      <p class="section-lead" style="margin-left:0">Sem templates genéricos. Sem soluções de prateleira. Tudo desenhado a partir da operação real do cliente.</p>
-    </div>
     <div class="sol-grid">
-      <div class="sol-list" id="solList">
-        <div class="sol-item active" data-i="0"><div class="ic"><i data-lucide="zap" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Automação de processos</h4><p>Fluxos que rodam 24h, sem intervenção manual.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
-        <div class="sol-item" data-i="1"><div class="ic"><i data-lucide="brain" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Agentes de IA</h4><p>Atendimento, triagem, análise — autônomos e personalizados.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
-        <div class="sol-item" data-i="2"><div class="ic"><i data-lucide="plug" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Integração de sistemas</h4><p>ERP, CRM, planilhas, APIs — tudo conversando entre si.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
-
-      </div>
-      <div class="sol-display">
-        <div class="label" id="sol-label">Automação de processos</div>
-        <h3 class="display-title" id="sol-title">Fluxos que rodam 24h, sem intervenção manual.</h3>
-        <p class="display-desc" id="sol-desc">Mapeamos cada passo da sua operação e construímos um fluxo automático que dispara na hora certa, com os dados certos, no sistema certo.</p>
-        <div class="sol-features" id="sol-features">
-          <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Roda em segundo plano, 24/7</div>
-          <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Logs e monitoramento por padrão</div>
-          <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Integra com seus sistemas existentes</div>
-          <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Manutenção e ajustes incluídos</div>
+      <div class="sol-left">
+        <div class="section-head reveal" style="text-align:left;margin:0 0 32px;max-width:560px">
+          <h2 class="section-title">Cada solução é construída <span class="accent">para o seu fluxo.</span></h2>
+          <p class="section-lead" style="margin-left:0">Sem templates genéricos. Sem soluções de prateleira. Tudo desenhado a partir da operação real do cliente.</p>
         </div>
-        <div class="sol-glyph" id="sol-glyph">⚡</div>
+        <div class="sol-list" id="solList">
+          <div class="sol-item active" data-i="0"><div class="ic"><i data-lucide="zap" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Automação de processos</h4><p>Fluxos que rodam 24h, sem intervenção manual.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
+          <div class="sol-item" data-i="1"><div class="ic"><i data-lucide="brain" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Agentes de IA</h4><p>Atendimento, triagem, análise — autônomos e personalizados.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
+          <div class="sol-item" data-i="2"><div class="ic"><i data-lucide="plug" style="width:18px;height:18px"></i></div><div style="flex:1"><h4>Integração de sistemas</h4><p>ERP, CRM, planilhas, APIs — tudo conversando entre si.</p></div><span class="arrow"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></span></div>
+        </div>
+        <div class="sol-cta reveal"><button class="nav-cta" onclick="scrollToForm()" style="padding:14px 28px;font-size:14px;border-radius:10px">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button></div>
+      </div>
+      <div class="sol-display" id="solDisplay">
+        <div class="sol-glow-a"></div>
+        <div class="sol-glow-b"></div>
+        <div class="sol-border-bottom"></div>
+        <div class="sol-content">
+          <div class="sol-icon-circle" id="sol-icon"><i data-lucide="zap" style="width:22px;height:22px"></i></div>
+          <div class="label" id="sol-label">Automação de processos</div>
+          <h3 class="display-title" id="sol-title">Fluxos que rodam 24h, sem intervenção manual.</h3>
+          <p class="display-desc" id="sol-desc">Mapeamos cada passo da sua operação e construímos um fluxo automático que dispara na hora certa, com os dados certos, no sistema certo.</p>
+          <div class="sol-features" id="sol-features">
+            <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Roda em segundo plano, 24/7</div>
+            <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Logs e monitoramento por padrão</div>
+            <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Integra com seus sistemas existentes</div>
+            <div class="sol-feature"><span class="check"><i data-lucide="check" style="width:13px;height:13px"></i></span>Manutenção e ajustes incluídos</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:48px" class="reveal"><button class="nav-cta" onclick="scrollToForm()" style="padding:14px 28px;font-size:14px;border-radius:10px">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button></div>
   </div>
 </section>
 
@@ -496,23 +522,6 @@ body {
         </ul>
       </div>
     </div>
-    <div style="text-align:center;margin-top:48px" class="reveal"><button class="nav-cta" onclick="scrollToForm()" style="padding:14px 28px;font-size:14px;border-radius:10px">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button></div>
-  </div>
-</section>
-
-<!-- RESULTS -->
-<section class="results" id="resultados">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2 class="section-title">O que muda quando a operação <span class="accent">trabalha sozinha.</span></h2>
-    </div>
-    <div class="stats">
-      <div class="stat reveal" data-d="1"><span class="v">−68%</span><span class="l">tempo gasto em tarefas operacionais</span></div>
-      <div class="stat reveal" data-d="2"><span class="v">24h</span><span class="l">de operação contínua, sem intervenção</span></div>
-      <div class="stat reveal" data-d="3"><span class="v">3×</span><span class="l">mais capacidade sem aumentar equipe</span></div>
-      <div class="stat reveal" data-d="4"><span class="v">8 sem.</span><span class="l">prazo médio para a primeira automação</span></div>
-    </div>
-    <p class="stat-foot reveal">Médias agregadas dos últimos 12 meses, em projetos concluídos pela Axen.</p>
     <div style="text-align:center;margin-top:48px" class="reveal"><button class="nav-cta" onclick="scrollToForm()" style="padding:14px 28px;font-size:14px;border-radius:10px">Solicite um diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px"></i></button></div>
   </div>
 </section>
@@ -633,9 +642,9 @@ renderInlineIcons();
 
   // Solutions interactive
   const SOLS = [
-    { glyph:'⚡', label:'Automação de processos', title:'Fluxos que rodam 24h, sem intervenção manual.', desc:'Mapeamos cada passo da sua operação e construímos um fluxo automático que dispara na hora certa, com os dados certos, no sistema certo.', features:['Roda em segundo plano, 24/7','Logs e monitoramento por padrão','Integra com seus sistemas existentes','Manutenção e ajustes incluídos'] },
-    { glyph:'◆', label:'Agentes de IA', title:'Inteligência que decide e executa sozinha.', desc:'Agentes treinados na sua operação que entendem contexto, tomam decisões e disparam ações — sem precisar de supervisão a cada passo.', features:['Treinado nos seus dados e processos','Decisões auditáveis e reversíveis','Atendimento, triagem, análise — sob medida','Integra com WhatsApp, email, CRM'] },
-    { glyph:'∞', label:'Integração de sistemas', title:'ERP, CRM, planilhas — tudo conversando.', desc:'Conectamos os sistemas que você já usa em um único ecossistema, com dados consistentes e atualizados em tempo real.', features:['APIs, webhooks e bancos de dados','Sincronização em tempo real','Funciona com sistemas legados','Padrão de qualidade enterprise'] },
+    { icon:'zap', label:'Automação de processos', title:'Fluxos que rodam 24h, sem intervenção manual.', desc:'Mapeamos cada passo da sua operação e construímos um fluxo automático que dispara na hora certa, com os dados certos, no sistema certo.', features:['Roda em segundo plano, 24/7','Logs e monitoramento por padrão','Integra com seus sistemas existentes','Manutenção e ajustes incluídos'] },
+    { icon:'brain', label:'Agentes de IA', title:'Inteligência que decide e executa sozinha.', desc:'Agentes treinados na sua operação que entendem contexto, tomam decisões e disparam ações — sem precisar de supervisão a cada passo.', features:['Treinado nos seus dados e processos','Decisões auditáveis e reversíveis','Atendimento, triagem, análise — sob medida','Integra com WhatsApp, email, CRM'] },
+    { icon:'plug', label:'Integração de sistemas', title:'ERP, CRM, planilhas — tudo conversando.', desc:'Conectamos os sistemas que você já usa em um único ecossistema, com dados consistentes e atualizados em tempo real.', features:['APIs, webhooks e bancos de dados','Sincronização em tempo real','Funciona com sistemas legados','Padrão de qualidade enterprise'] },
   ];
   document.querySelectorAll('.sol-item').forEach(item => {
     item.onclick = () => {
@@ -643,7 +652,7 @@ renderInlineIcons();
       item.classList.add('active');
       const i = +item.dataset.i;
       const s = SOLS[i];
-      document.getElementById('sol-glyph').textContent = s.glyph;
+      document.getElementById('sol-icon').innerHTML = `<i data-lucide="${s.icon}" style="width:22px;height:22px"></i>`;
       document.getElementById('sol-label').textContent = s.label;
       document.getElementById('sol-title').textContent = s.title;
       document.getElementById('sol-desc').textContent = s.desc;
@@ -652,6 +661,27 @@ renderInlineIcons();
       safeCreateIcons();
     };
   });
+
+  // 3D tilt effect on sol-display
+  const solDisplay = document.getElementById('solDisplay');
+  if (solDisplay && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let raf = null;
+    solDisplay.addEventListener('mousemove', (e) => {
+      const rect = solDisplay.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = -(y / rect.height) * 5;
+      const rotateY = (x / rect.width) * 5;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        solDisplay.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+      });
+    });
+    solDisplay.addEventListener('mouseleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      solDisplay.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  }
 
   // FAQ
   function toggleFaq(btn){
